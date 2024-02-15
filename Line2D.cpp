@@ -13,7 +13,7 @@ Point2D Line2D::getPt2() const{
     return pt2;
 }
 
-double Line2D::getScalarValue() {
+double Line2D::getScalarValue() const {
     return length;
 }
 
@@ -28,11 +28,7 @@ void Line2D::setPt2(Point2D pt2) {
 }
 
 void Line2D::setLength() {
-    int x1 = pt1.getX();
-    int y1 = pt1.getY();
-    int x2 = pt2.getX();
-    int y2 = pt2.getY();
-    length = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
+    length = sqrt(pow(pt1.getX() - pt2.getX(), 2) + pow(pt1.getY() - pt2.getY(), 2));
 }
 
 // Less than operator

@@ -12,7 +12,7 @@ int Point2D::getY() const{
     return y;
 }
 
-double Point2D::getScalarValue() {
+double Point2D::getScalarValue() const {
     return distFrOrigin;
 }
 

@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <iomanip>
 
 #include "Point2D.h"
 #include "Point3D.h"
@@ -96,6 +97,7 @@ void readData() {
             std::cout << "Point2D: (" << x << ", " << y << ")" << std::endl; // Debug print
             Point2D point(x, y);
             point2DList.push_back(point); // Store the Point2D object in the vector
+
         } else if (objectType == "Point3D") {
             int x, y, z;
             char comma, leftBracket, rightBracket;
@@ -103,6 +105,7 @@ void readData() {
             std::cout << "Point3D: (" << x << ", " << y << ", " << z << ")" << std::endl; // Debug print
             Point3D point(x, y, z);
             point3DList.push_back(point); // Store the Point3D object in the vector
+
         } else if (objectType == "Line2D") {
             int x1, y1, x2, y2;
             char comma, leftBracket1, rightBracket1, leftBracket2, rightBracket2;
@@ -111,6 +114,7 @@ void readData() {
             std::cout << "Line2D: (" << x1 << ", " << y1 << "), (" << x2 << ", " << y2 << ")" << std::endl; // Debug print
             Line2D line(Point2D(x1, y1), Point2D(x2, y2));
             line2DList.push_back(line); // Store the Line2D object in the vector
+            
         } else if (objectType == "Line3D") {
             int x1, y1, z1, x2, y2, z2;
             char comma, leftBracket1, rightBracket1, leftBracket2, rightBracket2;
@@ -138,11 +142,15 @@ void printVectors() {
     std::cout << "Point2D List:" << std::endl;
     for (const auto& point : point2DList) {
         std::cout << "(" << point.getX() << ", " << point.getY() << ")" << std::endl;
+       
+        std::cout << std::fixed << std::setprecision(3) << "Dist from Origin: " << point.getScalarValue() << std::endl;
+        
     }
 
     std::cout << "\nPoint3D List:" << std::endl;
     for (const auto& point : point3DList) {
         std::cout << "(" << point.getX() << ", " << point.getY() << ", " << point.getZ() << ")" << std::endl;
+        std::cout << std::fixed << std::setprecision(3) << "Dist from Origin: " << point.getScalarValue() << std::endl;
     }
 
     std::cout << "\nLine2D List:" << std::endl;

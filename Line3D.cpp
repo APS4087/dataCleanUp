@@ -23,13 +23,8 @@ void Line3D::setPt2(Point3D pt2) {
 }
 
 void Line3D::setLength() {
-    double x1 = pt1.getX();
-    double y1 = pt1.getY();
-    double z1 = pt1.getZ();
-    double x2 = pt2.getX();
-    double y2 = pt2.getY();
-    double z2 = pt2.getZ();
-    length = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2) + pow(z2 - z1, 2));
+    
+    length = sqrt(pow(pt1.getX() - pt2.getX(), 2) + pow(pt1.getY() - pt2.getY(), 2) + pow(pt1.getZ() + pt2.getZ(), 2));
 }
 
 // Less than operator
