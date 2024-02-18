@@ -5,11 +5,11 @@ Line3D::Line3D(Point3D pt1, Point3D pt2) : Line2D(Point2D(pt1.getX(), pt1.getY()
 }
 
 Point3D Line3D::getPt1() const{
-    return pt1;
+    return this->pt1;
 }
 
 Point3D Line3D::getPt2() const{
-    return pt2;
+    return this->pt2;
 }
 
 void Line3D::setPt1(Point3D pt1) {
@@ -39,4 +39,15 @@ bool Line3D::operator!=(const Line3D& other) const {
 
 bool Line3D::operator==(const Line3D& other) const {
     return pt1 == other.pt1 && pt2 == other.pt2;
+}
+
+// Friend Function
+std::ostream &operator<<(std::ostream &out, const Line3D &line3D)
+{
+    out << Format::format3DCoordinates(line3D.getPt1().getX(), line3D.getPt1().getY(), line3D.getPt1().getZ());
+    out << Format::addSpacing(3);
+    out << Format::format3DCoordinates(line3D.getPt2().getX(), line3D.getPt2().getY(), line3D.getPt2().getZ());
+    out << Format::addSpacing(3);
+    out << Format::formatDistance(line3D.getScalarValue());
+    return out;
 }

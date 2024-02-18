@@ -2,8 +2,10 @@
 #define LINE2D_H
 
 #include "Point2D.h"
+#include "format.h"
 
 class Line2D {
+    friend std::ostream &operator<<(std::ostream &out, const Line2D &line2D); // out << line2D
 private:
     Point2D pt1;
     Point2D pt2;

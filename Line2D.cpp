@@ -6,15 +6,15 @@ Line2D::Line2D(Point2D pt1, Point2D pt2) : pt1(pt1), pt2(pt2) {
 }
 
 Point2D Line2D::getPt1() const{
-    return pt1;
+    return this->pt1;
 }
 
 Point2D Line2D::getPt2() const{
-    return pt2;
+    return this->pt2;
 }
 
 double Line2D::getScalarValue() const {
-    return length;
+    return this->length;
 }
 
 void Line2D::setPt1(Point2D pt1) {
@@ -44,4 +44,15 @@ bool Line2D::operator!=(const Line2D& other) const {
 
 bool Line2D::operator==(const Line2D& other) const {
     return pt1 == other.pt1 && pt2 == other.pt2;
+}
+
+// Friend Function
+std::ostream &operator<<(std::ostream &out, const Line2D &line2D)
+{
+    out << Format::format2DCoordinates(line2D.getPt1().getX(), line2D.getPt1().getY());
+    out << Format::addSpacing(3);
+    out << Format::format2DCoordinates(line2D.getPt2().getX(), line2D.getPt2().getY());
+    out << Format::addSpacing(3);
+    out << Format::formatDistance(line2D.getScalarValue());
+    return out;
 }

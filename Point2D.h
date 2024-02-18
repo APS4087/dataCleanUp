@@ -2,8 +2,12 @@
 #define POINT2D_H
 
 #include <cmath>
+#include <iostream>
+#include <ostream>
+#include "Format.h"
 
 class Point2D {
+    friend std::ostream &operator<<(std::ostream &out, const Point2D &point2D); // out << point2D
 protected:
     int x;
     int y;

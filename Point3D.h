@@ -4,6 +4,7 @@
 #include "Point2D.h"
 
 class Point3D : public Point2D {
+    friend std::ostream &operator<<(std::ostream &out, const Point3D &point3D); // out << point3D
 protected:
     int z;
     void setDistFrOrigin();

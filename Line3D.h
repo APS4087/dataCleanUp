@@ -3,8 +3,10 @@
 
 #include "Line2D.h"
 #include "Point3D.h"
+#include "Format.h"
 
 class Line3D : public Line2D {
+    friend std::ostream &operator<<(std::ostream &out, const Line3D &line3D); // out << line3D
 private:
     Point3D pt1;
     Point3D pt2;

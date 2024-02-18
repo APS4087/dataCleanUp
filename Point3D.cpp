@@ -5,7 +5,7 @@ Point3D::Point3D(int x, int y, int z) : Point2D(x, y) , z(z){
 }
 
 int Point3D::getZ() const{
-    return z;
+    return this->z;
 }
 
 void Point3D::setZ(int z) {
@@ -29,4 +29,13 @@ bool Point3D::operator!=(const Point3D& other) const {
 
 bool Point3D::operator==(const Point3D& other) const {
     return x == other.x && y == other.y && z == other.z;
+}
+
+// Friend Function
+std::ostream &operator<<(std::ostream &out, const Point3D &point3D)
+{
+    out << Format::format3DCoordinates(point3D.getX(), point3D.getY(), point3D.getZ());
+    out << Format::addSpacing(3);
+    out << Format::formatDistance(point3D.getScalarValue());
+    return out;
 }
