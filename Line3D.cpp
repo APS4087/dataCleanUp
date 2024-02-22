@@ -1,5 +1,10 @@
 #include "Line3D.h"
 
+// Default constructor
+Line3D::Line3D() : Line2D(), pt1(Point3D()), pt2(Point3D()) {
+    setLength();
+}
+
 Line3D::Line3D(Point3D pt1, Point3D pt2) : Line2D(Point2D(pt1.getX(), pt1.getY()), Point2D(pt2.getX(), pt2.getY())), pt1(pt1), pt2(pt2) {
     setLength();
 }
@@ -27,19 +32,9 @@ void Line3D::setLength() {
     length = sqrt(pow(pt1.getX() - pt2.getX(), 2) + pow(pt1.getY() - pt2.getY(), 2) + pow(pt1.getZ() + pt2.getZ(), 2));
 }
 
-// Less than operator
-bool Line3D::operator<(const Line3D& other) const {
-    if (pt1 != other.pt1) return pt1 < other.pt1;
-    return pt2 < other.pt2;
-}
-
-bool Line3D::operator!=(const Line3D& other) const {
-    return !(pt1 == other.pt1 && pt2 == other.pt2);
-}
-
-bool Line3D::operator==(const Line3D& other) const {
-    return pt1 == other.pt1 && pt2 == other.pt2;
-}
+// Operator Overloading
+bool Line3D::operator<(const Line3D &rhs) const { return ((this->pt1 < rhs.pt1) || (this->pt2 < rhs.pt2)); }
+bool Line3D::operator==(const Line3D &rhs) const { return ((this->pt1 == rhs.pt1) && (this->pt2 == rhs.pt2)); }
 
 // Friend Function
 std::ostream &operator<<(std::ostream &out, const Line3D &line3D)

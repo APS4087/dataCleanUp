@@ -15,15 +15,16 @@ protected:
     void setDistFrOrigin();
 
 public:
+    Point2D();
     Point2D(int x, int y);
     int getX() const;
     int getY() const;
     double getScalarValue() const;
     void setX(int x);
     void setY(int y);
-    bool operator<(const Point2D& other) const;
-    bool operator!=(const Point2D& other) const;
-    bool operator==(const Point2D& other) const;
+    // Operator Overloading
+    bool operator<(const Point2D &rhs) const;
+    bool operator==(const Point2D &rhs) const;
     
 };
 

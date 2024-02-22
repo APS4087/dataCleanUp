@@ -1,6 +1,9 @@
 #include "Line2D.h"
 #include <cmath>
 
+// Default constructor
+Line2D::Line2D() : pt1(Point2D()), pt2(Point2D()), length(0) {}
+
 Line2D::Line2D(Point2D pt1, Point2D pt2) : pt1(pt1), pt2(pt2) {
     setLength();
 }
@@ -31,20 +34,12 @@ void Line2D::setLength() {
     length = sqrt(pow(pt1.getX() - pt2.getX(), 2) + pow(pt1.getY() - pt2.getY(), 2));
 }
 
-// Less than operator
-bool Line2D::operator < (const Line2D& other) const {
-    if (pt1 != other.pt1) return pt1 < other.pt1;
-    return pt2 < other.pt2;
-}
 
 
-bool Line2D::operator!=(const Line2D& other) const {
-    return !(pt1 == other.pt1 && pt2 == other.pt2);
-}
 
-bool Line2D::operator==(const Line2D& other) const {
-    return pt1 == other.pt1 && pt2 == other.pt2;
-}
+// Operator Overloading
+bool Line2D::operator<(const Line2D &rhs) const { return ((this->pt1 < rhs.pt1) || (this->pt2 < rhs.pt2)); }
+bool Line2D::operator==(const Line2D &rhs) const { return ((this->pt1 == rhs.pt1) && (this->pt2 == rhs.pt2)); }
 
 // Friend Function
 std::ostream &operator<<(std::ostream &out, const Line2D &line2D)

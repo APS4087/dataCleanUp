@@ -14,15 +14,17 @@ private:
 protected:
     void setLength();
 
+
 public:
+    Line3D();
     Line3D(Point3D pt1, Point3D pt2);
     Point3D getPt1() const;
     Point3D getPt2() const;
     void setPt1(Point3D pt1);
     void setPt2(Point3D pt2);
-    bool operator<(const Line3D& other) const;
-    bool operator!=(const Line3D& other) const;
-    bool operator==(const Line3D& other) const;
+    // Operator Overloading
+    bool operator<(const Line3D &rhs) const;
+    bool operator==(const Line3D &rhs) const;
 };
 
 #endif // LINE3D_H

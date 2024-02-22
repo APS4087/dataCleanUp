@@ -1,5 +1,9 @@
 #include "Point2D.h"
 
+// Default constructor
+Point2D::Point2D() : x(0), y(0) {
+    setDistFrOrigin();
+}
 
 Point2D::Point2D(int x, int y): x(x), y(y) {
     setDistFrOrigin();
@@ -29,19 +33,10 @@ void Point2D::setDistFrOrigin() {
     distFrOrigin = sqrt(x * x + y * y);
 }
 
-// Operator overloading
-bool Point2D::operator<(const Point2D& other) const {
-    if (x != other.x) return x < other.x;
-    return y < other.y;
-}
+// Operator Overloading
+bool Point2D::operator<(const Point2D &rhs) const { return (this->x < rhs.x || this->y < rhs.y); }
+bool Point2D::operator==(const Point2D &rhs) const { return ((this->x == rhs.x) && (this->y == rhs.y)); }
 
-bool Point2D::operator!=(const Point2D& other) const {
-    return !(*this == other);
-}
-
-bool Point2D::operator==(const Point2D& other) const {
-    return x == other.x && y == other.y;
-}
 
 // Friend Function
 std::ostream &operator<<(std::ostream &out, const Point2D &point2D)

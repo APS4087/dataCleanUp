@@ -1,5 +1,10 @@
 #include "Point3D.h"
 
+// Default constructor
+Point3D::Point3D() : Point2D(), z(0) {
+    setDistFrOrigin();
+}
+
 Point3D::Point3D(int x, int y, int z) : Point2D(x, y) , z(z){
     setDistFrOrigin();
 }
@@ -17,19 +22,9 @@ void Point3D::setDistFrOrigin() {
     distFrOrigin = sqrt(x * x + y * y + z * z);
 }
 
-bool Point3D::operator<(const Point3D& other) const {
-    if (x != other.x) return x < other.x;
-    if (y != other.y) return y < other.y;
-    return z < other.z;
-}
-
-bool Point3D::operator!=(const Point3D& other) const {
-    return !(*this == other);
-}
-
-bool Point3D::operator==(const Point3D& other) const {
-    return x == other.x && y == other.y && z == other.z;
-}
+// Operator Overloading
+bool Point3D::operator<(const Point3D &rhs) const { return (Point2D::operator<(rhs) || this->z < rhs.z); }
+bool Point3D::operator==(const Point3D &rhs) const { return (Point2D::operator==(rhs) && this->z == rhs.z); }
 
 // Friend Function
 std::ostream &operator<<(std::ostream &out, const Point3D &point3D)

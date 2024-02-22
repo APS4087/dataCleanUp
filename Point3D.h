@@ -10,12 +10,13 @@ protected:
     void setDistFrOrigin();
 
 public:
+    Point3D();
     Point3D(int x, int y, int z);
     int getZ() const;
     void setZ(int z);
-    bool operator<(const Point3D& other) const;
-    bool operator!=(const Point3D& other) const;
-    bool operator==(const Point3D& other) const;
+    // Operator Overloading
+    bool operator<(const Point3D &rhs) const;
+    bool operator==(const Point3D &rhs) const;
 };
 
 #endif // POINT3D_H
